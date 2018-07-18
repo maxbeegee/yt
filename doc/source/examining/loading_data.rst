@@ -176,7 +176,7 @@ subdivided into "virtual grids". For this purpose, one can pass in the
 
 which will subdivide each original grid into ``nprocs`` grids. Note that this
 parameter is independent of the number of MPI tasks assigned to analyze the data
-set in parallel (see :ref:`_parallel-computation`), and ideally should be (much)
+set in parallel (see :ref:`parallel-computation`), and ideally should be (much)
 larger than this.
 
 .. note::
