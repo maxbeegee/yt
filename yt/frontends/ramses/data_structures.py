@@ -401,8 +401,8 @@ class RAMSESDataset(Dataset):
             # note: we exclude the unlikely event that one of the group is actually a file
             # instad of a folder
             self.num_groups = len(
-                filter(lambda e: os.path.isdir(e),
-                       glob(os.path.join(root_folder, 'group_?????'))))
+                [_ for _ in glob(os.path.join(root_folder, 'group_?????'))
+                 if os.path.isdir(_)])
             self.root_folder = root_folder
         else:
             self.root_folder = os.path.split(filename)[0]
@@ -530,7 +530,7 @@ class RAMSESDataset(Dataset):
                     dom, mi, ma = f.readline().split()
                     self.hilbert_indices[int(dom)] = (float(mi), float(ma))
 
-        if rheader['ordering type'] != 'hilbert' and self.bbox:
+        if rheader['ordering type'] != 'hilbert' and self._bbox is not None:
             raise NotImplementedError(
                 'The ordering %s is not compatible with the `bbox` argument.'
                 % rheader['ordering type'])
