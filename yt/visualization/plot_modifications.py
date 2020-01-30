@@ -530,7 +530,7 @@ class ContourCallback(PlotCallback):
                  plot_args=None, label=False, take_log=None,
                  label_args=None, text_args=None, data_source=None):
         PlotCallback.__init__(self)
-        def_plot_args = {'colors':'k'}
+        def_plot_args = {'colors':'k', 'linestyles': 'solid'}
         def_text_args = {'colors':'w'}
         self.ncont = ncont
         self.field = field
@@ -1549,7 +1549,7 @@ class HaloCatalogCallback(PlotCallback):
 
     Parameters
     ----------
-    halo_catalog : Dataset, DataContainer, or HaloCatalog
+    halo_catalog : Dataset, DataContainer, or ~yt.analysis_modules.halo_analysis.halo_catalog.HaloCatalog
         The object containing halos to be overplotted. This can
         be a HaloCatalog object, a loaded halo catalog dataset,
         or a data container from a halo catalog dataset.

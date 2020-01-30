@@ -34,6 +34,7 @@ import base64
 import numpy
 import matplotlib
 import getpass
+import glob
 from math import floor, ceil
 from numbers import Number as numeric_type
 
@@ -1019,7 +1020,7 @@ def get_hash(infile, algorithm='md5', BLOCKSIZE=65536):
     """Generate file hash without reading in the entire file at once.
 
     Original code licensed under MIT.  Source:
-    http://pythoncentral.io/hashing-files-with-python/
+    https://www.pythoncentral.io/hashing-files-with-python/
 
     Parameters
     ----------
@@ -1263,3 +1264,9 @@ def validate_center(center):
         raise TypeError("Expected 'center' to be a numeric object of type "
                         "list/tuple/np.ndarray/YTArray/YTQuantity, "
                         "received '%s'." % str(type(center)).split("'")[1])
+
+def sglob(pattern):
+    """
+    Return the results of a glob through the sorted() function.
+    """
+    return sorted(glob.glob(pattern))
